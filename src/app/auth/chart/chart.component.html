@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+    <table>
+        <tr>
+          <th style="width: 5%;">Posición</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>24h% Cambio</th>
+          <th>ATH</th>
+          <th>ATH% Cambio</th>
+          <th>Oferta</th>
+          <th>Valor Total</th>
+        </tr>
+        <tr *ngFor="let coin of top100; let i = index" [value]="top100[i].id">
+          <td  style="width: 5%;"><strong> <p style="color:white;">{{i+1}}</p> 
+          </strong></td>
+          <td><img [src]="top100[i].image" [alt]="top100[i].id"><p style="color:white">
+            <strong> {{top100[i].id.charAt(0).toUpperCase() + top100[i].id.slice(1)}}</strong></p></td>
+          <td><p>${{top100[i].current_price | number}}</p></td>
+          <td><span [ngStyle]="{'background-color': top100[i].price_change_percentage_24h >= 0 ? 'green' : 'red'}">{{top100[i].price_change_percentage_24h | number}}%</span></td>
+          <td>${{top100[i].ath | number}}</td>
+          <td><span [ngStyle]="{'background-color': top100[i].ath_change_percentage >= 0 ? 'green' : 'red'}">{{top100[i].ath_change_percentage | number}}%</span></td>
+            <td>{{top100[i].circulating_supply | number}} {{top100[i].symbol.toUpperCase()}}</td>
+            <td>${{top100[i].market_cap | number}}</td>
+        </tr>
+    </table>

@@ -1,0 +1,25 @@
+.myDiv {
+    border: 5px outset lightblue;
+   
+  }
+  table{
+    
+  
+    width: 100% ;
+  }
+
+  td, th {
+    color: #FFFFFF;
+    width: 10%;
+    text-align: center;
+    margin-left: 20px;
+    font-size: 25px;
+  }
+  img{
+    max-width:1.5em;
+    max-height:1.5em;
+}
+p
+{
+    display:inline;
+}

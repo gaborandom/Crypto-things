@@ -1,0 +1,60 @@
+<app-menu></app-menu>
+<br>
+<br>
+<div class="container">
+    <form [formGroup]="form" (submit)="onSubmit(form.value)">
+
+        <label for="cars">
+            <h5>Escoge un activo:</h5>
+        </label>
+        <select formControlName="top100" type="top100" name="top100" id="top100" style="display: block;">
+            <option *ngFor="let coin of top100; let i = index" [value]="top100[i].id">
+                {{i+1 + '.- '+top100[i].id.charAt(0).toUpperCase() + top100[i].id.slice(1)}}
+            </option>
+        </select>
+        <label for="cars">
+            <h5>Escoge una operación:</h5>
+        </label>
+        <select formControlName="operacion" type="operacion" name="operacion" id="operacion" style="display: block;">
+            <option value="add">Agregar</option>
+            <option value="substract">Quitar</option>
+        </select>
+        <br>
+        <input type="text" formControlName="cantidad" id="cantidad" name="cantidad" placeholder="Cantidad"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+        <input type="submit" value="Realizar operación" class="buttonGreen" [disabled]="form.invalid">
+    </form>
+    
+    <div id="divChart">
+    <table>
+        <tr>
+        <td>
+            
+                <canvas id="myChart"></canvas>
+            
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Valor</th>
+                </tr>
+                <tr *ngFor="let coin of activos; let i = index" [value]="activos[i].id">
+                    <td><img [src]="activosInfo[i]?.image.thumb">{{coin.activo.charAt(0).toUpperCase() + coin.activo.slice(1)}}</td>
+                    <td>{{coin.cantidad}}</td>
+                    <td>${{activosInfo[i]?.market_data?.current_price.usd | number}}</td>
+                    <td>${{(activosInfo[i]?.market_data?.current_price.usd * coin.cantidad) | number}} </td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: left; font-weight: bold;"> VALOR TOTAL: </td>
+                    <td colspan="2" style="text-align: right; font-weight: bold;">${{valorTotal | number}}</td>
+                </tr>
+            </table>
+        </td></tr>
+    </table>
+</div>
+
+</div>
