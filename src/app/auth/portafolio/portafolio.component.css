@@ -1,0 +1,12 @@
+#divChart{
+    display: block;
+    width: 60em;
+    height: 60em;
+}
+
+td, th{
+    color: white;
+    text-align: center;
+}
+
+

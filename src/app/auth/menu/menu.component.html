@@ -1,0 +1,17 @@
+<nav class="nav-wrapper blue">
+    <div *ngIf="this.showLogin" class="container">
+        <table>
+            <th><a href="/auth/login" class="brand-logo" style="position: relative;">LOGIN</a></th>
+            <th><a href="/auth/register" class="brand-logo" style="position: relative;">REGISTER</a></th>
+            <th><a href="/auth/charts" class="brand-logo" style="position: relative;">CHARTS</a></th>
+        </table>
+    </div>
+    <div *ngIf="!this.showLogin" class="container">
+        <table>
+            <th><a href="javascript:void(0);" (click)="navigateAndLogout()" class="brand-logo"
+                    style="position: relative;">LOGOUT</a></th>
+            <th><a href="/auth/portafolio" class="brand-logo" style="position: relative;">PORTAFOLIO</a></th>
+            <th><a href="/auth/charts" class="brand-logo" style="position: relative;">CHARTS</a></th>
+        </table>
+    </div>
+</nav>
